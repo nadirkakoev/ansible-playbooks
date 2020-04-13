@@ -1,12 +1,12 @@
 ---
 - name: Stop Services
-  hosts: all   #DB
+  hosts: all        #DB
   become: true
   become_method: sudo
   user: centos 
   tasks: 
-  ignore_errors: true             #Dont stop if there are errors
-  - name: stop r1soft on Centos 7
+  ignore_errors: true                      #Dont stop if there are errors
+  - name: Stop r1soft on CentOS 7
     when: (ansible_distribution == "CentOS" and ansible_distribution_major_version == "7")
     systemd:
       name: sbm-agent
@@ -14,7 +14,7 @@
     ignore_errors: true   
 
 
-  - name: stop r1soft on Centos 6
+  - name: stop r1soft on CentOS 6
     when: (ansible_distribution == "CentOS" and ansible_distribution_major_version == "6")
     service:
       name: cdp-agent
