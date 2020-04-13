@@ -1,0 +1,49 @@
+---
+- name: Starts Services
+  hosts: all   #DB
+  become: true
+  become_method: sudo
+  user: centos 
+  tasks: 
+  ignore_errors: true             #Dont stop if there are errors
+  - name: stop r1soft on Centos 7
+    when: (ansible_distribution == "CentOS" and ansible_distribution_major_version == "7")
+    systemd:
+      name: sbm-agent
+      state: started
+    ignore_errors: true   
+
+
+  - name: stop r1soft on Centos 6
+    when: (ansible_distribution == "CentOS" and ansible_distribution_major_version == "6")
+    service:
+      name: cdp-agent
+      state: started
+    ignore_errors: true   
+
+
+  - name: stop filebeat
+    when: (ansible_distribution == "CentOS" and ansible_distribution_major_version == "7")
+    systemd:
+      name: filebeat
+      state: started      
+    ignore_errors: true   
+
+
+
+  - name: stop NRPE
+    when: (ansible_distribution == "CentOS" and ansible_distribution_major_version == "7")
+    systemd:
+      name: nrpe
+      state: started
+    ignore_errors: true   
+
+
+
+  - name: stop Mariadb
+    when: (ansible_distribution == "CentOS" and ansible_distribution_major_version == "7")
+    systemd:
+      name: mariadb
+      state: started
+    ignore_errors: true   
+  
