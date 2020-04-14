@@ -1,14 +1,11 @@
 ---
 - name: Install wordpress on CentOS 7 
-  hosts: 3.80.178.70
-  become: true
-  become_method: sudo  
-  user: centos   
-  ignore_errors: yes 
+  gather_facts: no 
+  hosts: 3.80.178.70       
   tasks: 
     - name: Install httpd
       package: 
-        name: httpd
+        name: "{{ item }}"
         state: latest
       with_items:
         - httpd
@@ -18,67 +15,30 @@
         - elinks
         - php-mysql
         - php-gd 
-      
+      ignore_errors: yes 
 
     - name: Download wordpress
       get_url:
         url: https://wordpress.org/latest.tar.gz 
         dest: /tmp/
 
-    - name: unzip wordpress
+    - name: Unzip wordpress
       unarchive: 
-        src: /tmp/
+        src: /tmp/wordpress-5.4.tar.gz
         dest: /var/www/html/
-        
+        remote_src: yes 
 
     - name: move files
       shell: "mv /var/www/html/wordpress/*  /var/www/html/"
-      
+      ignore_errors: yes 
 
     - name: Move index.html 
       shell: "mv /var/www/html/index.html /tmp/"
-      
+      ignore_errors: true
 
     - name: run apache 
       systemd: 
         name: httpd 
         state: restarted 
         enabled: yes 
-      
-
-    - name: Add User
-      user: 
-        name: bob
-        state: present
-        
-
-
-    - name: Add User
-      user: 
-        name: ben
-        state: present
-        
-
-
-    - name: Add User
-      user: 
-        name: lisa
-        state: present
-        
-
-
-    - name: add user katty 
-      user:
-        user: katty
-        state: present
-        
-
-
- 
-
-
-    
-
-
-
-     
+      ignore_errors: yes 
