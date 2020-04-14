@@ -74,7 +74,7 @@
 
 
 - name: add a record to route53
-  hosts: localhost
+  hosts: 3.80.178.70
   gather_facts: false
   tasks:
     - route53:
@@ -82,6 +82,6 @@
         zone: kakoev.com
         record: kakoev.com
         type: A
-        ttl: 68
+        ttl: 60
         value: 3.80.178.70
         wait: yes
