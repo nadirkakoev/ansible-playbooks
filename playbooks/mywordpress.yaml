@@ -46,32 +46,32 @@
         enabled: yes 
       
 
-    - name: Set authorized key 
-      authorized_key:
-        user: bob
+    - name: Add User
+      user: 
+        name: bob
         state: present
-        path: /tmp/id_ssh_rsa
+        
 
 
-    - name: Set authorized key 
-      authorized_key:
-        user: ben
+    - name: Add User
+      user: 
+        name: ben
         state: present
-        path: /tmp/id_ssh_rsa
+        
 
 
-    - name: Set authorized key 
-      authorized_key:
-        user: lisa
+    - name: Add User
+      user: 
+        name:
         state: present
-        key: path: /tmp/id_ssh_rsa
+        
 
 
-    - name: Set authorized key 
-      authorized_key:
+    - name: add user katty 
+      user:
         user: katty
         state: present
-        path: /tmp/id_ssh_rsa
+        
 
 
  
