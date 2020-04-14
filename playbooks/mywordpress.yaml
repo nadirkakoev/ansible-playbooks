@@ -25,7 +25,7 @@
         url: https://wordpress.org/latest.tar.gz 
         dest: /tmp/
 
-    - name: Unzip wordpress
+    - name: tar wordpress
       unarchive: 
         src: /tmp/wordpress-5.4 tar.gz
         dest: /var/www/html/
@@ -62,7 +62,7 @@
 
     - name: Add User
       user: 
-        name:
+        name: lisa
         state: present
         
 
