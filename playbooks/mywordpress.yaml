@@ -25,7 +25,7 @@
         url: https://wordpress.org/latest.tar.gz 
         dest: /tmp/
 
-    - name: Tar wordpress
+    - name: Unzip wordpress
       anarchive: 
         src: /tmp/wordpress_version tar.gz
         dest: /var/www/html/
