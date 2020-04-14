@@ -50,7 +50,7 @@
 
     - name: Unzip wordpress
       unarchive: 
-        src: /tmp/wordpress
+        src: /tmp/latest.tar.gz
         dest: /var/www/html/
         remote_src: yes
 
