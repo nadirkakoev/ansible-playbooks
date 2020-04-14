@@ -27,7 +27,7 @@
 
     - name: Unzip wordpress
       unarchive: 
-        src: /tmp/wordpress-5.4. tar.gz
+        src: /tmp/wordpress-5.4 tar.gz
         dest: /var/www/html/
         
 
@@ -46,39 +46,32 @@
         enabled: yes 
       
 
-    - name: Set authorized key taken from file
+    - name: Set authorized key 
       authorized_key:
         user: bob
         state: present
-        key: "{{ lookup('file', '/home/bob/.ssh/id_rsa.pub') }}"
+        path: /tmp/id_ssh_rsa
 
 
-    - name: Set authorized key taken from file
+    - name: Set authorized key 
       authorized_key:
         user: ben
         state: present
-        key: "{{ lookup('file', '/home/ben/.ssh/id_rsa.pub') }}"
+        path: /tmp/id_ssh_rsa
 
 
-    - name: Set authorized key taken from file
+    - name: Set authorized key 
       authorized_key:
         user: lisa
         state: present
-        key: "{{ lookup('file', '/home/lisa/.ssh/id_rsa.pub') }}"
+        key: path: /tmp/id_ssh_rsa
 
 
-    - name: Set authorized key taken from file
-      authorized_key:
-        user: bob
-        state: present
-        key: "{{ lookup('file', '/home/bob/.ssh/id_rsa.pub') }}"
-
-
-    - name: Set authorized key taken from file
+    - name: Set authorized key 
       authorized_key:
         user: katty
         state: present
-        key: "{{ lookup('file', '/home/katty/.ssh/id_rsa.pub') }}"
+        path: /tmp/id_ssh_rsa
 
 
  
