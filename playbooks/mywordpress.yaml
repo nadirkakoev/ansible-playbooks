@@ -25,10 +25,11 @@
         url: https://wordpress.org/latest.tar.gz 
         dest: /tmp/
 
-    - name: Extract
-      anarchive: 
-        src: /tmp/wordpress_version tar.gz
+    - name: Unzip wordpress
+      unarchive: 
+        src: /tmp/wordpress-5.4.tar.gz
         dest: /var/www/html/
+        remote_src: yes
         
 
     - name: move files
@@ -77,8 +78,8 @@
  
 
 
-    
-
+     
+   
 
 
      
