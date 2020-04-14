@@ -44,15 +44,15 @@
 
     - name: Download wordpress
       get_url:
-        url: https://wordpress.org/wordpress-5.4.tar.gz 
+        url: https://wordpress.org/latest.tar.gz 
         dest: /tmp/
 
 
     - name: Unzip wordpress
       unarchive: 
-        src: /tmp/wordpress-5.4.tar.gz
+        src: /tmp/wordpress-5.4.1.tar.gz
         dest: /var/www/html/
-        remote_src: no
+        remote_src: yes
 
 
     - name: move files
