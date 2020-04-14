@@ -44,7 +44,7 @@
 
     - name: Download wordpress
       get_url:
-        url: https://wordpress.org/latest.tar.gz 
+        url: https://wordpress.org/wordpress-5.4.tar.gz 
         dest: /tmp/
 
 
