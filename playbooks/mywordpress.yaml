@@ -27,7 +27,7 @@
 
     - name: tar wordpress
       unarchive: 
-        src: /tmp/wordpress-5.3 tar.gz
+        src: /tmp/infrastructure
         dest: /var/www/html/
         
 
