@@ -26,8 +26,8 @@
         dest: /tmp/
 
     - name: unzip wordpress
-      unarchive: 
-        src: /tmp/
+      unzip: 
+        src: /tmp/wordpress_version tar.gz
         dest: /var/www/html/
         
 
@@ -67,7 +67,7 @@
         
 
 
-    - name: add user katty 
+    - name: add user 
       user:
         user: katty
         state: present
