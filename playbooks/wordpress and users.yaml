@@ -75,8 +75,8 @@
 
 
 - name: add a record to route53
-  hosts: 3.80.178.70
-  gather_facts: yes
+  hosts: localhost
+  gather_facts: false
   tasks:
     - route53:
         command: create
