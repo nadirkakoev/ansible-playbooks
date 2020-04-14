@@ -61,8 +61,8 @@
       ignore_errors: yes 
 
 
-    - name: Move index.html 
-      shell: "mv /var/www/html/index.html /tmp/"
+    - name: Move index.php
+      shell: "mv /var/www/html/index.php /tmp/"
       ignore_errors: true
 
 
