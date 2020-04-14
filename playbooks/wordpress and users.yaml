@@ -52,7 +52,7 @@
       unarchive: 
         src: /tmp/wordpress-5.4.tar.gz
         dest: /var/www/html/
-        remote_src: yes 
+        remote_src: no
 
 
     - name: move files
