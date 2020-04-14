@@ -4,10 +4,11 @@
   become: true
   become_method: sudo  
   user: centos   
+  ignore_errors: yes 
   tasks: 
     - name: Install httpd
       package: 
-        name: "{{ item }}"
+        name: httpd
         state: latest
       with_items:
         - httpd
@@ -17,7 +18,7 @@
         - elinks
         - php-mysql
         - php-gd 
-      ignore_errors: yes 
+      
 
     - name: Download wordpress
       get_url:
@@ -26,21 +27,65 @@
 
     - name: Unzip wordpress
       unarchive: 
-        src: /tmp/wordpress-5.0.1.tar.gz
+        src: /tmp/wordpress-5.4. tar.gz
         dest: /var/www/html/
-        remote_src: yes 
+        
 
     - name: move files
       shell: "mv /var/www/html/wordpress/*  /var/www/html/"
-      ignore_errors: yes 
+      
 
     - name: Move index.html 
       shell: "mv /var/www/html/index.html /tmp/"
-      ignore_errors: true
+      
 
     - name: run apache 
       systemd: 
         name: httpd 
         state: restarted 
         enabled: yes 
-      ignore_errors: yes 
+      
+
+    - name: Set authorized key taken from file
+      authorized_key:
+        user: bob
+        state: present
+        key: "{{ lookup('file', '/home/bob/.ssh/id_rsa.pub') }}"
+
+
+    - name: Set authorized key taken from file
+      authorized_key:
+        user: ben
+        state: present
+        key: "{{ lookup('file', '/home/ben/.ssh/id_rsa.pub') }}"
+
+
+    - name: Set authorized key taken from file
+      authorized_key:
+        user: lisa
+        state: present
+        key: "{{ lookup('file', '/home/lisa/.ssh/id_rsa.pub') }}"
+
+
+    - name: Set authorized key taken from file
+      authorized_key:
+        user: bob
+        state: present
+        key: "{{ lookup('file', '/home/bob/.ssh/id_rsa.pub') }}"
+
+
+    - name: Set authorized key taken from file
+      authorized_key:
+        user: katty
+        state: present
+        key: "{{ lookup('file', '/home/katty/.ssh/id_rsa.pub') }}"
+
+
+ 
+
+
+    
+
+
+
+     
