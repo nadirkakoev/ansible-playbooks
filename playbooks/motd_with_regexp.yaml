@@ -1,0 +1,12 @@
+---
+- name: Manage with RegExp
+  hosts: localhost
+  become: true
+  become_method: sudo
+  user: centos
+  tasks:
+  - name: Manage etc motd
+    lineinfile:
+      path: "/etc/motd"
+      regexp: "^This is your test"
+      line: "This is my test"               #regexp alter the present word into anoher         
