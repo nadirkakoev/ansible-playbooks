@@ -1,0 +1,11 @@
+---
+- name: Manage Files
+  hosts: localhost     #Could be dynamic inventory=All
+  become: true
+  become_method: sudo
+  user: centos
+  tasks:
+  -name: Manage etc motd
+   lineinfile:
+     path: "/etc/motd"
+     line: "This is test"
