@@ -1,0 +1,14 @@
+---
+- name: File Blockinfile
+  hosts: localhost
+  become: true
+  become_method: sudo
+  user: centos
+  tasks:
+  - name: Blocking the file
+    blockinfile:
+      path: "/tmp/non_existent"
+      block: |
+        This file is created by me
+        and managed by me
+      create: yes
